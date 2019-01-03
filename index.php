@@ -1,4 +1,72 @@
+<?php
+$var1 = 'Méndez';
+$name = "Luis Fernando $var1";
+$limit_month = 2344;
+$Jobs = [
+  0 => [
+    'title'=> 'PHP Developer',
+    'description' => 'This job was greaaaaat!!',
+    'visible' => true,
+    'month' => 26
+  ],
+  1 => [
+    'title'=> 'Python Developer',
+    'description' => 'This job was... meh',
+    'visible' => false,
+    'month' => 14
+    ],
+  2 => [
+    'title'=>'DevOps',
+    'description'=>'THIS WAS THE BEST JOB',
+    'visible' => false,
+    'month' => 5
+  ],
+  3 => [
+    'title'=>'FrontEnd Developer',
+    'description'=>'THIS WAS THE FIRST JOB',
+    'visible' => true,
+    'month' => 12
+  ],
+  4 => [
+    'title'=>'AI Python Dev',
+    'description'=>'THIS WAS THE LAST JOB',
+    'visible' => true,
+    'month' => 3
+  ]
+];
 
+function getDuration($month) {
+
+  $years = floor($month/12);
+  $months = $month%12;
+  if (($years >= 1) && ($months != 0)) {
+    return "$years years $months months <br>";
+  } else if ((($years >= 1) && ($months == 0))) {
+    return "$years years <br>";
+  } else {
+    return "$months months <br>";
+  }
+}
+
+function printJob($var1, $var2) {
+  if($var1[$var2]['visible'] == false) {
+    return;
+  }
+
+  echo '<li class="work-position">';
+  echo '<h5>' . $var1[$var2]['title'] . '</h5>';
+  echo '<p>'.$var1[$var2]['description'].'</p>';
+  echo getDuration($var1[$var2]['month']);
+  echo '<strong>Achievements:</strong>';
+  echo '<ul>';
+  echo '<li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>';
+  echo '<li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>';
+  echo '<li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>';
+  echo '</ul>';
+  echo '</li>';
+}
+
+?>
 <!doctype html>
 <html lang="en">
 
@@ -22,8 +90,8 @@
         <img id="profile-picture" src="https://ui-avatars.com/api/?name=John+Doe&size=255" alt="">
       </div>
       <div class="col">
-        <h1><?php echo 'Luis Fernando Mendez'; ?></h1>
-        <h2>PHP Developer</h2>
+        <h1><?php echo $name; ?></h1>
+        <h2><?php echo $Jobs['a']; ?></h2>
         <ul>
           <li>Mail: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e38b8680978c91a38e828a8fcd808c8e">[email&#160;protected]</a></li>
           <li>Phone: 1234567890</li>
@@ -46,36 +114,22 @@
         <div>
           <h3 class="border-bottom-gray" >Work Experience</h3>
           <ul>
-            <li class="work-position">
-              <h5>PHP Developer</h5>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi sapiente sed pariatur sint exercitationem eos expedita eveniet veniam ullam, quia neque facilis dicta voluptatibus. Eveniet doloremque ipsum itaque obcaecati nihil.</p>
-              <strong>Achievements:</strong>
-              <ul>
-                <li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>
-                <li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>
-                <li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>
-              </ul>
-            </li>
-            <li class="work-position">
-                <h5>PHP Developer</h5>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi sapiente sed pariatur sint exercitationem eos expedita eveniet veniam ullam, quia neque facilis dicta voluptatibus. Eveniet doloremque ipsum itaque obcaecati nihil.</p>
-                <strong>Achievements:</strong>
-                <ul>
-                  <li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>
-                  <li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>
-                  <li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>
-                </ul>
-              </li>
-              <li class="work-position">
-                  <h5>PHP Developer</h5>
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi sapiente sed pariatur sint exercitationem eos expedita eveniet veniam ullam, quia neque facilis dicta voluptatibus. Eveniet doloremque ipsum itaque obcaecati nihil.</p>
-                  <strong>Achievements:</strong>
-                  <ul>
-                    <li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>
-                    <li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>
-                    <li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>
-                  </ul>
-                </li>
+            
+              <?php
+              $total_months = 0;
+              for($idx = 0; $idx < count($Jobs); $idx++) {
+                $total_months = $total_months + $Jobs[$idx]['month'];
+
+                if($total_months > $limit_month) {
+                  break;
+                }
+
+
+
+                printJob($Jobs, $idx);
+                  
+              }
+              ?>
           </ul>
         </div>
         <div>
