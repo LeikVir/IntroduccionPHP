@@ -63,7 +63,7 @@ include('jobs.php');
 
 
 
-                printJob($Job, $idx);
+                printElement($Job[$idx]);
                 
               }
               ?>
@@ -71,6 +71,14 @@ include('jobs.php');
         </div>
         <div>
             <h3 class="border-bottom-gray">Projects</h3>
+            <ul>
+            
+              <?php
+               for($idx = 0; $idx < count($Projects); $idx++) {
+                printElement($Projects[$idx]); 
+              }
+              ?>
+          </ul>
             <div class="project">
                 <h5>Project X</h5>
                 <div class="row">
