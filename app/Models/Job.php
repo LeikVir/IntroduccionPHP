@@ -2,14 +2,12 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Model;
 
-class Job extends BaseElement implements Printable{
+class Job extends Model{
 
-    public function __construct($title, $description, $month) {
-        $newTitle = 'Job: ' . $title;
-        parent::__construct($newTitle, $description, $month);
-    }
-
+    protected $table = 'jobs';
+   
     public function getDurationAsString() {
     
         $years = floor($this->month/12);
@@ -28,3 +26,8 @@ class Job extends BaseElement implements Printable{
     }
 
 }
+
+// public function __construct($title, $description, $month) {
+//     $newTitle = 'Job: ' . $title;
+//     parent::__construct($newTitle, $description, $month);
+// }
