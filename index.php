@@ -1,7 +1,7 @@
 <?php
 
+use App\Models\{Job, Project};
 include('jobs.php');
-
 
 ?>
 <!doctype html>
@@ -28,7 +28,7 @@ include('jobs.php');
       </div>
       <div class="col">
         <h1><?php echo $name; ?></h1>
-        <h2><?php echo $Job[0]->getTitle() ?></h2>
+        <h2><?php echo $jobs[0]->title ?></h2>
         <ul>
           <li>Mail: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e38b8680978c91a38e828a8fcd808c8e">[email&#160;protected]</a></li>
           <li>Phone: 1234567890</li>
@@ -54,16 +54,14 @@ include('jobs.php');
             
               <?php
               $total_months = 0;
-              for($idx = 0; $idx < count($Job); $idx++) {
-                $total_months = $total_months + $Job[$idx]->month;
+              for($idx = 0; $idx < count($jobs); $idx++) {
+                $total_months += $jobs[$idx]->month;
 
                 if($total_months > $limit_month) {
                   break;
                 }
 
-
-
-                printElement($Job[$idx]);
+                printElement($jobs[$idx]);
                 
               }
               ?>
@@ -74,8 +72,8 @@ include('jobs.php');
             <ul>
             
               <?php
-               for($idx = 0; $idx < count($Projects); $idx++) {
-                printElement($Projects[$idx]); 
+               for($idx = 0; $idx < count($projects); $idx++) {
+                printElement($projects[$idx]); 
               }
               ?>
           </ul>

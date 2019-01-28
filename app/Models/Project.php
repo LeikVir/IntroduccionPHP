@@ -2,7 +2,11 @@
 
 namespace App\Models;
 
-class Project extends BaseElement implements Printable {
+use Illuminate\Database\Eloquent\Model;
+
+class Project extends Model {
+
+    protected $table = 'projects';
     
     public function getDurationAsString() {
     
@@ -16,9 +20,4 @@ class Project extends BaseElement implements Printable {
         return "Time invested: $months months <br>";
         }
     }
-
-    public function getDescription() {
-        return $this->description;
-    }
-
 }
