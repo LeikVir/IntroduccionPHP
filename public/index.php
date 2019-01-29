@@ -38,23 +38,43 @@ $request = Zend\Diactoros\ServerRequestFactory::fromGlobals(
 
 $routerContainer = new RouterContainer();
 $map = $routerContainer->getMap();
-$map->get('index', '/CursoPHP/', '../index.php');
-$map->get('addJobs', '/CursoPHP/jobs/add', '../addJob.php');
+$map->get('index', '/CursoPHP/', [
+    'controller' => 'App\Controllers\IndexController',
+    'action' => 'indexAction'
+]);
+$map->get('addJobs', '/CursoPHP/Jobs/add', [
+    'controller' => 'App\Controllers\JobsController',
+    'action' => 'getAddJobAction'
+]);
 
 $matcher = $routerContainer->getMatcher();
 $route = $matcher->match($request);
 
+function printElement($job) {
+    // if($job->visible == false) {
+    //   return;
+    // }
+  
+    echo '<li class="work-position">';
+    echo '<h5>' . $job->title . '</h5>';
+    echo '<p>'.$job->description.'</p>';
+    echo $job->getDurationAsString();
+    echo '<strong>Achievements:</strong>';
+    echo '<ul>';
+    echo '<li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>';
+    echo '<li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>';
+    echo '<li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>';
+    echo '</ul>';
+    echo '</li>';
+  }
+
 if(!$route) {
     echo 'No route';
 } else {
-    require $route->handler;
+    $handlerData = $route->handler;
+    $controllerName = $handlerData['controller'];
+    $actionName = $handlerData['action'];
+    
+    $controller = new $controllerName;
+    $controller->$actionName();
 }
-
-
-// $route = $_GET['route'] ?? '/';
-
-// if ($route == '/') {
-//     require '../index.php';
-// } elseif ($route == 'addJob') {
-//     require '../addJob.php';
-// }

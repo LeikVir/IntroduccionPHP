@@ -1,9 +1,3 @@
-<?php
-
-use App\Models\{Job, Project};
-include('jobs.php');
-
-?>
 <!doctype html>
 <html lang="en">
 

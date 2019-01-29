@@ -1,10 +1,5 @@
 <?php
 
-$var1 = 'Méndez';
-$name = "Luis Fernando $var1";
-$limit_month = 2344;
-
-
 use App\Models\{Job, Project};
 
 $jobs= Job::all();
