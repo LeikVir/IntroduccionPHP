@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>Add Job</title>
+    <title>Add Project</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
         crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
@@ -8,9 +8,9 @@
 
 
 <body>
-<h3>Add Job</h3>
+<h3>Add Project</h3>
 <br>
-    <form action="../Jobs/add" method="post">
+    <form action="../Projects/add" method="post">
         <label for="">Title:</label>
         <input type="text" name="title"> 
         <br>

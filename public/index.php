@@ -46,14 +46,23 @@ $map->get('addJobs', '/CursoPHP/Jobs/add', [
     'controller' => 'App\Controllers\JobsController',
     'action' => 'getAddJobAction'
 ]);
+$map->post('saveJobs', '/CursoPHP/Jobs/add', [
+    'controller' => 'App\Controllers\JobsController',
+    'action' => 'getAddJobAction'
+]);
+$map->get('addProject', '/CursoPHP/Projects/add', [
+    'controller' => 'App\Controllers\ProjectsController',
+    'action' => 'getAddProjectAction'
+]);
+$map->post('saveProject', '/CursoPHP/Projects/add', [
+    'controller' => 'App\Controllers\ProjectsController',
+    'action' => 'getAddProjectAction'
+]);
 
 $matcher = $routerContainer->getMatcher();
 $route = $matcher->match($request);
 
 function printElement($job) {
-    // if($job->visible == false) {
-    //   return;
-    // }
   
     echo '<li class="work-position">';
     echo '<h5>' . $job->title . '</h5>';
@@ -76,5 +85,5 @@ if(!$route) {
     $actionName = $handlerData['action'];
     
     $controller = new $controllerName;
-    $controller->$actionName();
+    $controller->$actionName($request);
 }
