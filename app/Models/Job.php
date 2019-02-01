@@ -13,11 +13,11 @@ class Job extends Model{
         $years = floor($this->month/12);
         $months = $this->month%12;
         if (($years >= 1) && ($months != 0)) {
-        return "Job duration: $years years $months months <br>";
+        return "Job duration: $years years $months months";
         } else if ((($years >= 1) && ($months == 0))) {
-        return "Job duration: $years year(s) <br>";
+        return "Job duration: $years year(s)";
         } else {
-        return "Job duration: $months months <br>";
+        return "Job duration: $months months";
         }
     }
 

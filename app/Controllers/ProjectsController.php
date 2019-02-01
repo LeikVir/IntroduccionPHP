@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use App\Models\Project;
 
-class ProjectsController {
+class ProjectsController extends BaseController {
     public function getAddProjectAction($request) {
         if ($request->getMethod() == 'POST') {
             $postData = $request->getParsedBody();          
@@ -15,6 +15,6 @@ class ProjectsController {
             $projects->save();
         }
 
-    include '../views/addProject.php';
+    return $this->renderHTML('addProject.twig');
     }
 }

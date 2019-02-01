@@ -1,13 +1,14 @@
-<html>
-<head>
-    <title>Add Project</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
-        crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
-</head>
+{% extends "layout.twig" %}
+
+{% block title %} 
+
+<title>Agregar Project</title>
+
+{% endblock %}
 
 
-<body>
+
+{% block content %}
 <h3>Add Project</h3>
 <br>
     <form action="../Projects/add" method="post">
@@ -22,5 +23,4 @@
         <br>        
         <button type="submit">Save</button> 
     </form>
-</body>
-</html>
+{% endblock %}
