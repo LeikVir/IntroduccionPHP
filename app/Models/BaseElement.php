@@ -9,11 +9,14 @@ class BaseElement {
     public $description;
     public $visible = true;
     public $month;
+    public $logo;
     
-    public function __construct($title, $description, $month) {
+    public function __construct($title, $description, $month, $ruta) {
         $this->setTitle($title); 
         $this->description = $description; 
         $this->month = $month;
+        $this->logo = $ruta;
+
     }
 
     public function setTitle($t) {

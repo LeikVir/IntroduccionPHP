@@ -11,6 +11,9 @@
 {% block content %}
 <h3>Add Project</h3>
 <br>
+<div class="alert alert-primary" role="alert"> 
+    {{ responseMessage }} 
+</div>
     <form action="../Projects/add" method="post">
         <label for="">Title:</label>
         <input type="text" name="title"> 

@@ -11,16 +11,17 @@
 {% block content %}
 <h3>Add Job</h3>
 <br>
-    <form action="../Jobs/add" method="post">
+<div class="alert alert-primary" role="alert"> 
+    {{ responseMessage }} 
+</div>
+    <form action="../Jobs/add" method="post" enctype="multipart/form-data">
         <label for="">Title:</label>
-        <input type="text" name="title"> 
-        <br>
+        <input type="text" name="title">         </br>
         <label for="">Description:</label>
-        <input type="text" name="description">
-        <br>
+        <input type="text" name="description">        </br>
         <label for="">Month:</label>
-        <input type="number" name="month">
-        <br>        
+        <input type="number" name="month">        </br>        
+        <input type="file" name="logo">       </br>
         <button type="submit">Save</button> 
     </form>
 {% endblock %}
